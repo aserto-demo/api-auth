@@ -26,14 +26,6 @@ types:
     relations:
       identifier: user
 
-  # resource creator represents a user type that can create new resources
-  resource-creator:
-    relations:
-      member: user | group#member
-
-    permissions:
-      can_create_resource: member
-
   # service represents a set of endpoints
   service:
     relations:
