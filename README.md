@@ -45,13 +45,11 @@ topaz templates install api-auth https://raw.githubusercontent.com/aserto-demo/a
 ```bash
 ds-load openapi -d ./openapi
 ```
-
 This will create 4 groups per service:
 * `<service-name>-readers`: can invoke GET endpoints
 * `<service-name>-writers`: can invoke GET, PUT, PATCH endpoints
 * `<service-name>-creators`: can invoke GET, PUT, PATCH, POST endpoints
 * `<service-name>-deleters`: can invoke GET, PUT, PATCH, POST, DELETE endpoints
-
 It will also create 4 global groups, which have these entitlements across all services:
 * `global-readers`
 * `global-writers`
@@ -59,17 +57,13 @@ It will also create 4 global groups, which have these entitlements across all se
 * `global-deleters`
 
 4. Assign users to the groups (or entitle users to be able to invoke individual endpoints)
-
 The easiest way to do this is within the Topaz Console:
 
 ```bash
 topaz console
 ```
-
 You can also do this from the CLI.
-
 For example, to make Morty be able to invoke all GET endpoints across all services:
-
 ```bash
 topaz ds set relation '
 {
@@ -84,9 +78,7 @@ topaz ds set relation '
 ```
 
 5. Check whether a user can invoke an endpoint.
-
 You can do this in the Topaz "Evaluator" tab, or from the CLI.
-
 For example, to check whether Morty can invoke the `todo_list_api.get.v1.todos` endpoint:
 
 ```bash
