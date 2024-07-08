@@ -3,9 +3,9 @@
 API Authorization using Aserto and Topaz.
 
 This sample imports the OpenAPI definitions from three common services:
-* a todo sample API
+* todo list API
 * rick and morty API
-* java petstore API
+* petstore API
 
 These definitions become `service` and `endpoint` objects in Topaz.
 
@@ -34,26 +34,13 @@ brew install topaz
 brew install ds-load
 ```
 
-2. Create a new `topaz` configuration by install a template:
+2. Create a new `topaz` configuration by installing the `api-auth` template:
 
 ```bash
-topaz templates install simple-rbac --config-name=api-auth
+topaz templates install api-auth https://raw.githubusercontent.com/aserto-demo/api-auth/main/templates.json
 ```
 
-3. Delete and set a new manifest:
-
-```bash
-topaz ds delete manifest
-topaz ds set manifest ./model/manifest.yaml
-```
-
-4. Load the citadel users/groups:
-
-```bash
-topaz ds import -d ./data
-```
-
-5. Load the three OpenAPI specs in the `./openapi` directory as `service` and `endpoint` instances:
+3. Load the three OpenAPI specs in the `./openapi` directory as `service` and `endpoint` instances:
 
 ```bash
 ds-load openapi -d ./openapi
@@ -71,7 +58,7 @@ It will also create 4 global groups, which have these entitlements across all se
 * global-creators
 * global-deleters
 
-6. Assign users to the groups (or entitle users to be able to invoke individual endpoints)
+4. Assign users to the groups (or entitle users to be able to invoke individual endpoints)
 
 The easiest way to do this is within the Topaz Console:
 
@@ -96,7 +83,7 @@ topaz ds set relation '
 }'
 ```
 
-7. Check whether a user can invoke an endpoint.
+5. Check whether a user can invoke an endpoint.
 
 You can do this in the Topaz "Evaluator" tab, or from the CLI.
 
