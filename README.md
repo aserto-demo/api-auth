@@ -26,7 +26,7 @@ Finally, we also create 4 global groups, which have these entitlements across al
 
 ## Setup
 
-### Install CLIs
+### 1. Install CLIs
 
 Install `topaz` and `ds-load` CLIs:
 
@@ -36,7 +36,7 @@ brew install topaz
 brew install ds-load
 ```
 
-### Create configuration
+### 2. Create configuration
 
 Create a new `topaz` configuration by installing the `api-auth` template:
 
@@ -44,7 +44,7 @@ Create a new `topaz` configuration by installing the `api-auth` template:
 topaz templates install api-auth https://raw.githubusercontent.com/aserto-demo/api-auth/main/templates.json
 ```
 
-### Import OpenAPI specs
+### 3. Import OpenAPI specs
 
 Import the three OpenAPI specs in the `./openapi` directory as `service` and `endpoint` instances:
 
@@ -64,7 +64,7 @@ It will also create 4 global groups, which have these entitlements across all se
 * `global-creators`
 * `global-deleters`
 
-### Entitle users to APIs
+### 4. Entitle users to APIs
 
 Assign users to the groups (or entitle users to be able to invoke individual endpoints).
 
@@ -91,9 +91,9 @@ topaz ds set relation '
 }'
 ```
 
-### Test the model
+### 5. Test the model
 
-5. Check whether a user can invoke an endpoint.
+Check whether a user can invoke an endpoint.
 
 You can do this in the Topaz "Evaluator" tab, or from the CLI.
 
