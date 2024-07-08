@@ -1,0 +1,14 @@
+{
+  "name": "api-auth",
+  "description": "API Authorization topaz template",
+  "assets": {
+    "manifest": "model/manifest.yaml",
+    "policy": {
+      "name": "api-auth",
+      "resource": "ghcr.io/aserto-policies/policy-rebac:latest"
+    },
+    "idp_data": ["data/citadel-objects.json", "data/citadel-relations.json"],
+    "domain_data": ["data/objects.json", "data/relations.json"],
+    "assertions": ["test/assertions.json"]
+  }
+}
