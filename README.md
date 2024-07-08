@@ -13,16 +13,16 @@ Each `endpoint` can be assigned a set of `invoker` users and groups, which entit
 
 To make management more scalable, each service also has a `readers`, `writers`, `creators`, and `deleters` group associated with it, which are entitled in the following way:
 
-* <service-name>-readers: can invoke GET endpoints
-* <service-name>-writers: can invoke GET, PUT, PATCH endpoints
-* <service-name>-creators: can invoke GET, PUT, PATCH, POST endpoints
-* <service-name>-deleters: can invoke GET, PUT, PATCH, POST, DELETE endpoints
+* `<service-name>-readers`: can invoke GET endpoints
+* `<service-name>-writers`: can invoke GET, PUT, PATCH endpoints
+* `<service-name>-creators`: can invoke GET, PUT, PATCH, POST endpoints
+* `<service-name>-deleters`: can invoke GET, PUT, PATCH, POST, DELETE endpoints
 
 Finally, we also create 4 global groups, which have these entitlements across all services:
-* global-readers
-* global-writers
-* global-creators
-* global-deleters
+* `global-readers`
+* `global-writers`
+* `global-creators`
+* `global-deleters`
 
 ## Setup
 
@@ -47,16 +47,16 @@ ds-load openapi -d ./openapi
 ```
 
 This will create 4 groups per service:
-* <service-name>-readers: can invoke GET endpoints
-* <service-name>-writers: can invoke GET, PUT, PATCH endpoints
-* <service-name>-creators: can invoke GET, PUT, PATCH, POST endpoints
-* <service-name>-deleters: can invoke GET, PUT, PATCH, POST, DELETE endpoints
+* `<service-name>-readers`: can invoke GET endpoints
+* `<service-name>-writers`: can invoke GET, PUT, PATCH endpoints
+* `<service-name>-creators`: can invoke GET, PUT, PATCH, POST endpoints
+* `<service-name>-deleters`: can invoke GET, PUT, PATCH, POST, DELETE endpoints
 
 It will also create 4 global groups, which have these entitlements across all services:
-* global-readers
-* global-writers
-* global-creators
-* global-deleters
+* `global-readers`
+* `global-writers`
+* `global-creators`
+* `global-deleters`
 
 4. Assign users to the groups (or entitle users to be able to invoke individual endpoints)
 
