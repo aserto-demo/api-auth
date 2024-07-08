@@ -26,7 +26,9 @@ Finally, we also create 4 global groups, which have these entitlements across al
 
 ## Setup
 
-1. Install `topaz` and `ds-load` CLIs:
+### Install CLIs
+
+Install `topaz` and `ds-load` CLIs:
 
 ```bash
 brew tap aserto-dev/tap
@@ -34,36 +36,48 @@ brew install topaz
 brew install ds-load
 ```
 
-2. Create a new `topaz` configuration by installing the `api-auth` template:
+### Create configuration
+
+Create a new `topaz` configuration by installing the `api-auth` template:
 
 ```bash
 topaz templates install api-auth https://raw.githubusercontent.com/aserto-demo/api-auth/main/templates.json
 ```
 
-3. Load the three OpenAPI specs in the `./openapi` directory as `service` and `endpoint` instances:
+### Import OpenAPI specs
+
+Import the three OpenAPI specs in the `./openapi` directory as `service` and `endpoint` instances:
 
 ```bash
 ds-load openapi -d ./openapi
 ```
+
 This will create 4 groups per service:
 * `<service-name>-readers`: can invoke GET endpoints
 * `<service-name>-writers`: can invoke GET, PUT, PATCH endpoints
 * `<service-name>-creators`: can invoke GET, PUT, PATCH, POST endpoints
 * `<service-name>-deleters`: can invoke GET, PUT, PATCH, POST, DELETE endpoints
+
 It will also create 4 global groups, which have these entitlements across all services:
 * `global-readers`
 * `global-writers`
 * `global-creators`
 * `global-deleters`
 
-4. Assign users to the groups (or entitle users to be able to invoke individual endpoints)
+### Entitle users to APIs
+
+Assign users to the groups (or entitle users to be able to invoke individual endpoints).
+
 The easiest way to do this is within the Topaz Console:
 
 ```bash
 topaz console
 ```
+
 You can also do this from the CLI.
+
 For example, to make Morty be able to invoke all GET endpoints across all services:
+
 ```bash
 topaz ds set relation '
 {
@@ -77,8 +91,12 @@ topaz ds set relation '
 }'
 ```
 
+### Test the model
+
 5. Check whether a user can invoke an endpoint.
+
 You can do this in the Topaz "Evaluator" tab, or from the CLI.
+
 For example, to check whether Morty can invoke the `todo_list_api.get.v1.todos` endpoint:
 
 ```bash
