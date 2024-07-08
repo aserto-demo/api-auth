@@ -1,7 +1,7 @@
 {
   "api-auth": {
     "title": "API Authorization",
-    "short_description": "Template for API authorization of services and endpoints",
+    "short_description": "Template for API authorization of services and endpoints.",
     "description": "A data-oriented approach to API authorization, where services and endpoints can be imported from an openapi.json file, and authorized using a ReBAC model.",
     "docs_url": "https://docs.aserto.com/docs/getting-started/peoplefinder/peoplefinder-overview",
     "topaz_url": "api-auth.json"
