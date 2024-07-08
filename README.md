@@ -102,7 +102,7 @@ For example, to check whether Morty can invoke the `todo_list_api.get.v1.todos` 
 ```bash
 topaz ds check '{
   "object_type": "endpoint",
-  "object_id": "todo_list_api.get.v1.todos",
+  "object_id": "Todo_List_API:GET:/v1/todos",
   "relation": "can_invoke",
   "subject_type": "user",
   "subject_id": "morty@the-citadel.com"
