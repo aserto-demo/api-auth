@@ -97,7 +97,7 @@ Check whether a user can invoke an endpoint.
 
 You can do this in the Topaz "Evaluator" tab, or from the CLI.
 
-For example, to check whether Morty can invoke the `todo_list_api.get.v1.todos` endpoint:
+For example, to check whether Morty can invoke the `Todo_List_API:GET:/v1/todos` endpoint:
 
 ```bash
 topaz ds check '{
@@ -108,3 +108,48 @@ topaz ds check '{
   "subject_id": "morty@the-citadel.com"
 }'
 ```
+
+This should come back as `true`, since Morty is a member of the `global-readers` group.
+
+To check whether Rick can invoke the same API, issue the following command:
+
+```bash
+topaz ds check '{
+  "object_type": "endpoint",
+  "object_id": "Todo_List_API:GET:/v1/todos",
+  "relation": "can_invoke",
+  "subject_type": "user",
+  "subject_id": "rick@the-citadel.com"
+}'
+```
+
+This should come back as `false`, since Rick has not been entitled to any APIs.
+
+To allow Rick to invoke (only) this endpoint, we can make him an invoker:
+
+```bash
+topaz ds set relation '
+{
+  "relation": {
+    "object_type": "endpoint",
+    "object_id": "Todo_List_API:GET:/v1/todos",
+    "relation": "invoker",
+    "subject_type": "user",
+    "subject_id": "rick@the-citadel.com"
+  }
+}'
+```
+
+Now Rick should be able to invoke the API:
+
+```bash
+topaz ds check '{
+  "object_type": "endpoint",
+  "object_id": "Todo_List_API:GET:/v1/todos",
+  "relation": "can_invoke",
+  "subject_type": "user",
+  "subject_id": "rick@the-citadel.com"
+}'
+```
+
+This should evaluate as `true`.
